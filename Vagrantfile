@@ -22,6 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     test.vm.provider :virtualbox do |vb, override|
       override.vm.box = "ubuntu/xenial64"
+      vb.memory = 1024
       vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     end
 
@@ -69,7 +70,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ci.vm.synced_folder ".", "/vagrant"
 
     ci.vm.provider :virtualbox do |vb|
-      vb.memory = 1024
+      vb.memory = 2048
       vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     end
   end
