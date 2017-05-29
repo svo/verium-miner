@@ -1,0 +1,23 @@
+
+    - name: Install aptitude
+      apt: pkg=aptitude update_cache=yes
+      become: yes
+
+    - name: Apt update/upgrade
+      apt: upgrade=yes update_cache=yes
+      become: yes
+
+    - name: Install tmux terminal multiplexer
+      apt: pkg=tmux
+      become: yes
+
+    - name: Download .run
+      get_url: url=http://www.vericoin.info/downloads/Verium_1.0.4_64bit.run dest=/tmp/Verium_1.0.4_64bit.run mode=a+x
+      register: get_url_result
+      until: get_url_result | succeeded
+      retries: 3
+      delay: 1
+
+    - name: Run .run
+      command: ./Verium_1.0.4_64bit.run chdir=/tmp
+      become: yes

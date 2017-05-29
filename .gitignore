@@ -1,0 +1,6 @@
+*.swo
+*.swp
+.vagrant
+**/*.retry
+**/*.tfstate*
+ubuntu-xenial-16.04-cloudimg-console.log
