@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "miner" {
-  instance_type = "t2.medium"
+  instance_type = "c4.xlarge"
   ami = "${lookup(var.aws_amis, var.aws_region)}"
   key_name = "${var.key_name}"
 
