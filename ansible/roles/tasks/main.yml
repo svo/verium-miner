@@ -16,22 +16,16 @@
       become: yes
       with_items:
       - git
-      - automake
-      - autoconf
-      - pkg-config
+      - htop
+      - build-essential
+      - libssl-dev
       - libcurl4-openssl-dev
       - libjansson-dev
-      - libssl-dev
       - libgmp-dev
+      - automake
 
-    - name: Get veriumMiner
-      git: repo=https://github.com/effectsToCause/veriumMiner dest=~/veriumMiner
+    - name: Get cpuminer-opt
+      git: repo=https://github.com/JayDDee/cpuminer-opt.git dest=~/cpuminer-opt
 
-    - name: autogen
-      command: ./autogen.sh chdir=~/veriumMiner
-
-    - name: configure
-      command: ./configure CFLAGS="-march=native" --with-crypto --with-curl chdir=~/veriumMiner
-
-    - name: make
-      command: make chdir=~/veriumMiner
+    - name: Build
+      command: ./build.sh chdir=~/cpuminer-opt
