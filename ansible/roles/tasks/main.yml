@@ -15,12 +15,13 @@
       apt: pkg={{ item }}
       become: yes
       with_items:
-      - libxrender1
-      - libxcomposite1
-      - libxslt1-dev
-      - libqrencode-dev
-      - libgstreamer0.10-0
-      - libgstreamer-plugins-base0.10-0
+      - automake
+      - autoconf
+      - pkg-config
+      - libcurl4-openssl-dev
+      - libjansson-dev
+      - libssl-dev
+      - libgmp-dev
 
     - name: Download CUDA repository .deb
       get_url: url=http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb dest=/tmp/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
@@ -37,18 +38,14 @@
       apt: pkg=cuda update_cache=yes
       become: yes
 
-    - name: Download Verium .run
-      get_url: url=http://www.vericoin.info/downloads/Verium_1.0.4_64bit.run dest=~/Verium_1.0.4_64bit.run mode=a+x
-      register: get_url_result
-      until: get_url_result | succeeded
-      retries: 3
-      delay: 1
+    - name: Get veriumMiner
+      git: repo=https://github.com/effectsToCause/veriumMiner dest=~/veriumMiner
 
-    - name: Verium .run
-      command: ./Verium_1.0.4_64bit.run chdir=~/
+    - name: autogen
+      command: ./autogen.sh chdir=~/veriumMiner
 
-    - name: Configure Verium
-      lineinfile: dest=~/Verium_1.0.4_64bit/verium.conf line="{{ item }}"
-      with_items:
-      - gen=1
-      - daemon=1
+    - name: configure
+      command: ./configure CFLAGS="-march=native" --with-crypto --with-curl chdir=~/veriumMiner
+
+    - name: make
+      command: make chdir=~/veriumMiner
