@@ -15,6 +15,7 @@
       apt: pkg={{ item }}
       become: yes
       with_items:
+      - git
       - automake
       - autoconf
       - pkg-config
@@ -22,21 +23,6 @@
       - libjansson-dev
       - libssl-dev
       - libgmp-dev
-
-    - name: Download CUDA repository .deb
-      get_url: url=http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb dest=/tmp/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
-      register: get_deb_result
-      until: get_deb_result | succeeded
-      retries: 3
-      delay: 1
-
-    - name: Install CUDA repository
-      apt: deb=/tmp/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
-      become: yes
-
-    - name: Install CUDA
-      apt: pkg=cuda update_cache=yes
-      become: yes
 
     - name: Get veriumMiner
       git: repo=https://github.com/effectsToCause/veriumMiner dest=~/veriumMiner
