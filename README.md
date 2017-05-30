@@ -33,7 +33,7 @@ cd /vagrant
 
 Jenkins builds on commits and is available at: http://vagrant-vericoin-miner-ci.local:8080/
 
-## Build Instance
+## Build EC2 Instance
 
 ```
 vagrant ssh
@@ -42,12 +42,20 @@ cd /vagrant/terraform
 terraform apply
 ```
 
-## Provision Instance
+## Provision EC2 Instance
 
 ```
 vagrant ssh
 cd /vagrant
 ./provision.sh <path-to-private-key> <ip-for-instance>
+```
+
+## Using ansible for finer grained control of provisioning
+
+Create an `ansible_hosts` file with the IP/DNS for the Virtual Machine/s then:
+
+```
+ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook --private-key <path-to-private-key> -u <username> -i ansible_hosts ansible/playbook.yml
 ```
 
 ## Running Miner
