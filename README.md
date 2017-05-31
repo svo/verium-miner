@@ -5,10 +5,11 @@ The purpose of this project is to provide mechanisms for developing, testing and
 __Donations:__ if you find this project helpful I suggest donating to the creator of _cpuminer-opt_ via __BitCoin__ address `12tdvfF7KmAsihBXQXynT6E6th2c2pByTT?label=donations`. Donations to myself also appreciated at __VeriCoin__ address: `VUMA6hSTtrEbUcMLNccaSc2S5uwauUyfdU`.
 
 
-NOTES
-- this project uses git submodules so you will want to clone recursively to have all expected behaviours.
+__NOTES:__ this project uses git submodules so you will want to clone recursively to have all expected behaviours.
 
-`git clone --recursive git@github.com:svo/vericoin-miner.git`
+```
+git clone --recursive git@github.com:svo/vericoin-miner.git
+```
 
 ## Setup
 
