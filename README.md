@@ -2,6 +2,9 @@
 
 The purpose of this project is to provide mechanisms for developing, testing and deploying VeriCoin miners.
 
+__Donations:__ if you find this project helpful I suggest donating to the creator of _cpuminer-opt_ via __BitCoin__ address `12tdvfF7KmAsihBXQXynT6E6th2c2pByTT?label=donations`. Donations to myself also appreciated at __VeriCoin__ address: `VUMA6hSTtrEbUcMLNccaSc2S5uwauUyfdU`.
+
+
 NOTES
 - this project uses git submodules so you will want to clone recursively to have all expected behaviours.
 
@@ -42,7 +45,9 @@ cd /vagrant/terraform
 terraform apply
 ```
 
-## Provision EC2 Instance
+## Provisioning
+
+### Provision Instance
 
 ```
 vagrant ssh
@@ -50,7 +55,7 @@ cd /vagrant
 ./provision.sh <path-to-private-key> <ip-for-instance>
 ```
 
-## Using ansible for finer grained control of provisioning
+### Provision Instance/s By IP/DNS
 
 Create an `ansible_hosts` file with the IP/DNS for the Virtual Machine/s then:
 
