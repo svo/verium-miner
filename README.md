@@ -1,6 +1,6 @@
-# VeriCoin Miner
+# Verium Miner
 
-The purpose of this project is to provide mechanisms for developing, testing and deploying VeriCoin miners.
+The purpose of this project is to provide mechanisms for developing, testing and deploying Verium miners.
 
 __Donations:__ if you find this project helpful I suggest donating to the creator of [cpuminer-opt](https://github.com/JayDDee/cpuminer-opt) via __BitCoin__ address `12tdvfF7KmAsihBXQXynT6E6th2c2pByTT?label=donations`. Donations to myself also appreciated at __VeriCoin__ address: `VUMA6hSTtrEbUcMLNccaSc2S5uwauUyfdU`.
 
@@ -8,7 +8,7 @@ __Donations:__ if you find this project helpful I suggest donating to the creato
 __NOTES:__ this project uses git submodules so you will want to clone recursively to have all expected behaviours.
 
 ```
-git clone --recursive git@github.com:svo/vericoin-miner.git
+git clone --recursive git@github.com:svo/verium-miner.git
 ```
 
 ## Setup
@@ -35,7 +35,7 @@ cd /vagrant
 ./pre-commit.sh
 ```
 
-Jenkins builds on commits and is available at: http://vagrant-vericoin-miner-ci.local:8080/
+Jenkins builds on commits and is available at: http://vagrant-verium-miner-ci.local:8080/
 
 ## Build EC2 Instance
 

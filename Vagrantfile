@@ -5,7 +5,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "test" do |test|
-    test.vm.hostname = "vagrant-vericoin-miner-test"
+    test.vm.hostname = "vagrant-verium-miner-test"
     test.vm.network :private_network, type: "dhcp"
 
     test.vm.provision "shell", inline: "sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y install python"
@@ -34,7 +34,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define "dev", primary: true do |dev|
-    dev.vm.hostname = "vagrant-vericoin-miner-dev"
+    dev.vm.hostname = "vagrant-verium-miner-dev"
     dev.vm.network :private_network, type: "dhcp"
 
     dev.vm.provision "ansible" do |ansible|
@@ -56,7 +56,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "ci" do |ci|
     ci.vm.box = "ubuntu/trusty64"
 
-    ci.vm.hostname = "vagrant-vericoin-miner-ci"
+    ci.vm.hostname = "vagrant-verium-miner-ci"
     ci.vm.network :private_network, type: "dhcp"
 
     ci.vm.provision "ansible" do |ansible|
