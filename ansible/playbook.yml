@@ -1,6 +1,20 @@
 ---
 - hosts: all
 
+  pre_tasks:
+
+    - name: Apt update
+      apt: update_cache=yes
+      become: yes
+
+    - name: Install tmux terminal multiplexer
+      apt: pkg=tmux
+      become: yes
+
+    - name: Install htop
+      apt: pkg=htop
+      become: yes
+
   roles:
 
     - .

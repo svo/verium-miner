@@ -1,31 +1,17 @@
+- name: Install required packages
+  apt: pkg={{ item }}
+  become: yes
+  with_items:
+  - git
+  - build-essential
+  - automake
+  - libcurl4-openssl-dev
+  - libssl-dev
+  - libgmp-dev
+  - zlib1g-dev
 
-    - name: Install aptitude
-      apt: pkg=aptitude update_cache=yes
-      become: yes
+- name: Get cpuminer-opt
+  git: repo=https://github.com/JayDDee/cpuminer-opt.git dest=~/cpuminer-opt
 
-    - name: Apt update/upgrade
-      apt: upgrade=yes update_cache=yes
-      become: yes
-
-    - name: Install tmux terminal multiplexer
-      apt: pkg=tmux
-      become: yes
-
-    - name: Install required packages
-      apt: pkg={{ item }}
-      become: yes
-      with_items:
-      - git
-      - htop
-      - build-essential
-      - libssl-dev
-      - libcurl4-openssl-dev
-      - libjansson-dev
-      - libgmp-dev
-      - automake
-
-    - name: Get cpuminer-opt
-      git: repo=https://github.com/JayDDee/cpuminer-opt.git dest=~/cpuminer-opt
-
-    - name: Build
-      command: ./build.sh chdir=~/cpuminer-opt
+- name: Build
+  command: ./build.sh chdir=~/cpuminer-opt
